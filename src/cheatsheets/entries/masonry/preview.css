@@ -1,0 +1,19 @@
+.masonry-preview-stage {
+  padding: clamp(20px, 3vw, 32px);
+}
+
+.masonry-preview-canvas {
+  width: min(1120px, 100%);
+  height: clamp(240px, 36svh, 560px);
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(6, 7, 12, 0.94), rgba(10, 10, 10, 0.98));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 28px 60px rgba(0, 0, 0, 0.34);
+}
+
+.masonry-preview-scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+}

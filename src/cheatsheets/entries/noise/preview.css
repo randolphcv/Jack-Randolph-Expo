@@ -1,0 +1,26 @@
+.noise-preview-stage {
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  padding: clamp(28px, 5vw, 56px);
+  background: var(--charcoal);
+}
+
+.noise-demo-text {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #706c70;
+  font-family: "Cooper Black", "Bookman Old Style", Georgia, serif;
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 900;
+  line-height: 0.9;
+  text-align: center;
+  text-shadow:
+    0 4px 0 #151315,
+    0 18px 34px rgba(0, 0, 0, 0.48);
+}
+
+.noise-preview-stage .noise-overlay {
+  z-index: 2;
+}

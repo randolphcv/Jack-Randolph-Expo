@@ -1,0 +1,26 @@
+.click-spark-preview-stage {
+  min-height: clamp(260px, 36vw, 420px);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(236, 55, 36, 0.2), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.14), transparent 45%),
+    #0f0f10;
+  display: grid;
+  place-items: center;
+  padding: clamp(24px, 4vw, 48px);
+}
+
+.click-spark-preview-button {
+  position: relative;
+  z-index: 1;
+  min-height: 56px;
+  padding: 0 28px;
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-radius: 15px;
+  color: #3e3e3e;
+  background: rgba(18, 18, 20, 0.7);
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
