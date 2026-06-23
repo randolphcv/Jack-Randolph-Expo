@@ -44,7 +44,7 @@ const createUsage = settings => {
   return `import { useMemo } from 'react';
 import Masonry from './Masonry';
 
-const imageModules = import.meta.glob('/public/assets/packet1/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', {
+const imageModules = import.meta.glob('../../../../public/assets/packet1/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', {
   eager: true,
   import: 'default',
   query: '?url',
@@ -139,7 +139,7 @@ Framework notes: ${target.framework || 'React/Vite-style app; adapt paths to the
 Task:
 1. Install dependency: npm install gsap
 2. Add the Masonry.jsx component and Masonry.css stylesheet from the attached/component source.
-3. Use image assets from /public/assets/packet1 for the masonry items.
+3. Use image assets from /assets/packet1 for the masonry items.
 4. Render a masonry gallery with this usage baseline:
 
 ${createUsage(settings)}

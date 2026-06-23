@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import Masonry from './Masonry.jsx';
 import './preview.css';
 
-const imageModules = import.meta.glob('/public/assets/packet1/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', {
+const imageModules = import.meta.glob('../../../../public/assets/packet1/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', {
   eager: true,
   import: 'default',
   query: '?url',

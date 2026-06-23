@@ -1,0 +1,125 @@
+.preview-stage.glass-surface-preview-stage {
+  position: relative;
+  min-height: clamp(320px, 42vw, 560px);
+  height: clamp(320px, 42vw, 560px);
+  padding: clamp(20px, 4vw, 48px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.34), transparent 38%),
+    radial-gradient(circle at 80% 72%, rgba(23, 38, 74, 0.42), transparent 52%),
+    linear-gradient(135deg, #d8dfec, #9ca7bc 52%, #626f86 100%) !important;
+}
+
+.glass-surface-preview-scroll {
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: clamp(20px, 4vw, 48px);
+}
+
+.glass-surface-preview-track {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(20px, 4vw, 42px);
+  padding-top: clamp(20px, 4vw, 48px);
+  padding-bottom: clamp(120px, 18vw, 220px);
+}
+
+.glass-surface-preview-hero {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.glass-surface-preview-text-block {
+  width: min(520px, 100%);
+  min-height: clamp(190px, 22vw, 260px);
+  display: grid;
+  align-content: center;
+  gap: 0.8rem;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  color: #0f1829;
+  transform: scale(.7);
+  margin-top: clamp(40px, 1vw, 100px);
+  left: 50%;
+}
+
+.glass-surface-preview-card {
+  width: min(520px, 100%);
+  max-width: min(920px, 900%);
+}
+
+.glass-surface-preview-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.glass-surface-preview-kicker {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.66;
+  font-weight: 700;
+}
+
+.glass-surface-preview-text-block h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  letter-spacing: 0.01em;
+}
+
+.glass-surface-preview-text-block p {
+  margin: 0;
+  max-width: 56ch;
+  font-size: clamp(0.95rem, 1.7vw, 1.08rem);
+  line-height: 1.5;
+  color: rgba(15, 24, 41, 0.86);
+}
+
+.glass-surface-preview-empty-button {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 10%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  border-radius: inherit;
+  padding: 0;
+  pointer-events: auto;
+}
+
+.glass-surface-preview-gallery {
+  display: grid;
+  gap: clamp(14px, 2.2vw, 20px);
+}
+
+.glass-surface-preview-gallery img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+  object-fit: cover;
+  box-shadow:
+    0 18px 38px rgba(11, 18, 33, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+.glass-surface-preview-logo-wrap {
+  display: grid;
+  place-items: center;
+  padding-top: clamp(18px, 3vw, 30px);
+}
+
+.glass-surface-preview-logo {
+  width: min(320px, 70%);
+  display: block;
+  filter: drop-shadow(0 12px 28px rgba(15, 24, 41, 0.22));
+}
