@@ -17,6 +17,19 @@ import {
 } from 'lucide-react';
 import { cheatsheetEntries, cheatsheetFolders } from './cheatsheets/index.js';
 
+const assetBase = import.meta.env.BASE_URL;
+
+const appShellStyle = {
+  '--body-skull-url': `url(${assetBase}assets/skull-mark.png)`,
+  '--hero-portrait-url': `url(${assetBase}assets/hero-portrait.png)`,
+  '--leaf-corner-url': `url(${assetBase}assets/leaf-corner.png)`,
+  '--projects-skull-url': `url(${assetBase}assets/skull-mark.png)`,
+  '--botanical-frame-url': `url(${assetBase}assets/botanical-frame.png)`,
+};
+
+const lockupImageUrl = `${assetBase}assets/jack-randolph-lockup.png`;
+const lighthousePosterUrl = `${assetBase}assets/lighthouse-poster.jpg`;
+
 const navItems = [
   { id: 'home', label: 'home', Icon: Home },
   { id: 'projects', label: 'projects', Icon: Construction },
@@ -379,10 +392,10 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <div className="app-shell" style={appShellStyle}>
       <header className={`site-nav ${isNavHidden ? 'is-hidden' : 'is-visible'}`}>
         <a className="brand-mark" href="#home" aria-label="Jack Randolph home">
-          <img src="/assets/jack-randolph-lockup.png" alt="" />
+          <img src={lockupImageUrl} alt="" />
         </a>
         <nav aria-label="Primary navigation">
           {navItems.map(({ id, label, Icon }) => (
@@ -419,7 +432,7 @@ export default function App() {
         </div>
         <div className="construction-panel">
           <div className="construction-art">
-            <img src="/assets/lighthouse-poster.jpg" alt="Lighthouse artwork from the Jack Randolph visual assets" />
+            <img src={lighthousePosterUrl} alt="Lighthouse artwork from the Jack Randolph visual assets" />
             <div className="construction-badge">
               <Construction size={34} />
               <span>building</span>
@@ -443,6 +456,6 @@ export default function App() {
         </div>
         <CheatsheetWorkspace />
       </section>
-    </>
+    </div>
   );
 }

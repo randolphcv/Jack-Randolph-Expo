@@ -1,6 +1,12 @@
 import GlassSurface from './GlassSurface.jsx';
 import './preview.css';
 
+const assetBase = import.meta.env.BASE_URL;
+const heroPortraitUrl = `${assetBase}assets/hero-portrait.jpg`;
+const studioShadowUrl = `${assetBase}assets/studio-shadow.jpg`;
+const lighthousePosterUrl = `${assetBase}assets/lighthouse-poster.jpg`;
+const lockupImageUrl = `${assetBase}assets/jack-randolph-lockup.png`;
+
 export default function GlassSurfacePreview({ settings }) {
   const previewSettings = {
     ...settings,
@@ -27,13 +33,13 @@ export default function GlassSurfacePreview({ settings }) {
           </section>
 
           <div className="glass-surface-preview-gallery" aria-label="Preview gallery">
-            <img src="/assets/hero-portrait.jpg" alt="Portrait sample for glass surface scroll section" />
-            <img src="/assets/studio-shadow.jpg" alt="Studio shadow sample for glass surface scroll section" />
-            <img src="/assets/lighthouse-poster.jpg" alt="Poster sample for glass surface scroll section" />
+            <img src={heroPortraitUrl} alt="Portrait sample for glass surface scroll section" />
+            <img src={studioShadowUrl} alt="Studio shadow sample for glass surface scroll section" />
+            <img src={lighthousePosterUrl} alt="Poster sample for glass surface scroll section" />
           </div>
 
           <footer className="glass-surface-preview-logo-wrap">
-            <img src="/assets/jack-randolph-lockup.png" alt="Jack Randolph logo" className="glass-surface-preview-logo" />
+            <img src={lockupImageUrl} alt="Jack Randolph logo" className="glass-surface-preview-logo" />
           </footer>
         </div>
       </div>

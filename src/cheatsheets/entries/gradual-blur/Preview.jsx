@@ -1,6 +1,8 @@
 import GradualBlur from './GradualBlur.jsx';
 import './preview.css';
 
+const rebrandGuideImageUrl = `${import.meta.env.BASE_URL}assets/JR Rebrand Guide_Page_1.jpg`;
+
 export default function GradualBlurPreview({ settings }) {
   const previewSettings = {
     ...settings,
@@ -12,7 +14,7 @@ export default function GradualBlurPreview({ settings }) {
       <div className="gradual-blur-preview-scroll">
         <div className="gradual-blur-preview-content">
           <p className="gradual-blur-kicker">Scroll down to see the blur deepen.</p>
-          <img src="/assets/JR Rebrand Guide_Page_1.jpg" alt="Example of gradual blur effect on a panel edge" className="gradual-blur-preview-image" />
+          <img src={rebrandGuideImageUrl} alt="Example of gradual blur effect on a panel edge" className="gradual-blur-preview-image" />
             <h3>Notes, cards, and content can stay readable while the edge fades out.</h3>
         <p>
             This preview uses a tall scrolling panel so the blur overlay can show its stacked gradient behavior at the
