@@ -15,8 +15,8 @@ const defaults = {
   glowRadius: 160,
   sparkle: false,
   waveAmplitude: 0,
-  gradientFrom: 'rgba(168, 85, 247, 0.35)',
-  gradientTo: 'rgba(180, 151, 207, 0.25)',
+  gradientFrom: 'rgba(255, 72, 72, 0.55)',
+  gradientTo: 'rgba(210, 16, 16, 0.35)',
   glowColor: '#120F17',
 };
 

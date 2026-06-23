@@ -4,7 +4,7 @@ import './preview.css';
 export default function DotFieldPreview({ settings }) {
   return (
     <div className="preview-stage dot-field-preview-stage">
-      <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+      <div className="dot-field-preview-canvas">
         <DotField {...settings} />
       </div>
     </div>

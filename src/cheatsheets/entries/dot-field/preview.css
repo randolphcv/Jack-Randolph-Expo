@@ -2,3 +2,9 @@
   background: #120F17;
   border-radius: 12px;
 }
+
+.dot-field-preview-canvas {
+  position: relative;
+  width: 100%;
+  height: clamp(240px, 36svh, 560px);
+}
