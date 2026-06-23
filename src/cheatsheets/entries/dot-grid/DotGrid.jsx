@@ -1,7 +1,10 @@
 import { useRef, useEffect, useCallback, useMemo } from 'react';
 import { gsap } from 'gsap';
+import { InertiaPlugin } from 'gsap/InertiaPlugin';
 
 import './DotGrid.css';
+
+gsap.registerPlugin(InertiaPlugin);
 
 const throttle = (func, limit) => {
   let lastCall = 0;
@@ -78,9 +81,7 @@ const DotGrid = ({
     canvas.style.height = `${height}px`;
 
     const ctx = canvas.getContext('2d');
-    if (ctx) {
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
+    if (ctx) ctx.scale(dpr, dpr);
 
     const cols = Math.floor((width + gap) / (dotSize + gap));
     const rows = Math.floor((height + gap) / (dotSize + gap));
@@ -100,7 +101,7 @@ const DotGrid = ({
       for (let x = 0; x < cols; x++) {
         const cx = startX + x * cell;
         const cy = startY + y * cell;
-        dots.push({ cx, cy, xOffset: 0, yOffset: 0, _animating: false });
+        dots.push({ cx, cy, xOffset: 0, yOffset: 0, _inertiaApplied: false });
       }
     }
     dotsRef.current = dots;
@@ -172,29 +173,6 @@ const DotGrid = ({
   }, [buildGrid]);
 
   useEffect(() => {
-    const animateDot = (dot, pushX, pushY) => {
-      dot._animating = true;
-      gsap.killTweensOf(dot);
-
-      gsap.to(dot, {
-        xOffset: pushX,
-        yOffset: pushY,
-        duration: Math.min(0.65, Math.max(0.2, 900 / resistance)),
-        ease: 'power3.out',
-        onComplete: () => {
-          gsap.to(dot, {
-            xOffset: 0,
-            yOffset: 0,
-            duration: returnDuration,
-            ease: 'elastic.out(1,0.75)',
-            onComplete: () => {
-              dot._animating = false;
-            },
-          });
-        },
-      });
-    };
-
     const onMove = e => {
       const canvas = canvasRef.current;
       if (!canvas) return;
@@ -228,11 +206,23 @@ const DotGrid = ({
 
       for (const dot of dotsRef.current) {
         const dist = Math.hypot(dot.cx - pr.x, dot.cy - pr.y);
-        if (speed > speedTrigger && dist < proximity && !dot._animating) {
-          const falloff = Math.max(0, 1 - dist / proximity);
-          const pushX = (dot.cx - pr.x + vx * 0.004) * 0.45 * falloff;
-          const pushY = (dot.cy - pr.y + vy * 0.004) * 0.45 * falloff;
-          animateDot(dot, pushX, pushY);
+        if (speed > speedTrigger && dist < proximity && !dot._inertiaApplied) {
+          dot._inertiaApplied = true;
+          gsap.killTweensOf(dot);
+          const pushX = dot.cx - pr.x + vx * 0.005;
+          const pushY = dot.cy - pr.y + vy * 0.005;
+          gsap.to(dot, {
+            inertia: { xOffset: pushX, yOffset: pushY, resistance },
+            onComplete: () => {
+              gsap.to(dot, {
+                xOffset: 0,
+                yOffset: 0,
+                duration: returnDuration,
+                ease: 'elastic.out(1,0.75)',
+              });
+              dot._inertiaApplied = false;
+            },
+          });
         }
       }
     };
@@ -247,11 +237,24 @@ const DotGrid = ({
 
       for (const dot of dotsRef.current) {
         const dist = Math.hypot(dot.cx - cx, dot.cy - cy);
-        if (dist < shockRadius && !dot._animating) {
+        if (dist < shockRadius && !dot._inertiaApplied) {
+          dot._inertiaApplied = true;
+          gsap.killTweensOf(dot);
           const falloff = Math.max(0, 1 - dist / shockRadius);
-          const pushX = (dot.cx - cx) * shockStrength * falloff * 0.4;
-          const pushY = (dot.cy - cy) * shockStrength * falloff * 0.4;
-          animateDot(dot, pushX, pushY);
+          const pushX = (dot.cx - cx) * shockStrength * falloff;
+          const pushY = (dot.cy - cy) * shockStrength * falloff;
+          gsap.to(dot, {
+            inertia: { xOffset: pushX, yOffset: pushY, resistance },
+            onComplete: () => {
+              gsap.to(dot, {
+                xOffset: 0,
+                yOffset: 0,
+                duration: returnDuration,
+                ease: 'elastic.out(1,0.75)',
+              });
+              dot._inertiaApplied = false;
+            },
+          });
         }
       }
     };

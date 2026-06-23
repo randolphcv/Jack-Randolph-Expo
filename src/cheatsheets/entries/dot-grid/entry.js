@@ -10,8 +10,8 @@ const installCommand = 'npm install gsap';
 const defaults = {
   dotSize: 10,
   gap: 15,
-  baseColor: '#ff4d4d',
-  activeColor: '#ff4d4d',
+  baseColor: '#5227FF',
+  activeColor: '#5227FF',
   proximity: 120,
   speedTrigger: 100,
   shockRadius: 250,
@@ -39,8 +39,10 @@ const createUsage = settings => {
     'baseColor',
     'activeColor',
     'proximity',
+    'speedTrigger',
     'shockRadius',
     'shockStrength',
+    'maxSpeed',
     'resistance',
     'returnDuration',
   ];
